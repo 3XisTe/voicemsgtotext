@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "VMTT",
+  "version": "1.0",
+  "description": "Facebook voice message to text converter. Allows for retrieving voice messages from facebook chats and send API requests for message transcription.",
+  "permissions": [
+    "webRequest",
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}

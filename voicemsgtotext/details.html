@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Details</title>
+  <!-- Bulma CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" rel="stylesheet">
+  <!-- Font Awesome CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    .container {
+      height: 100%;
+      width: 100%;
+      padding: 20px;
+      border-radius: 5px;
+      overflow: auto;
+      word-wrap: break-word;
+    }
+    .back-button {
+      cursor: pointer;
+      color: #00d1b2;
+    }
+    .back-button i {
+      margin-right: 5px;
+    }
+    .hidden {
+        display: none;
+    }
+  </style>
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark" data-theme="dark">
+    <div class="container">
+    <span class="back-button" id="back-button">
+      <i class="fas fa-arrow-left"></i> Back
+    </span>
+    <div id="statusMessage" class="notification is-info mt-4 hidden">
+        <p id="statusText">Requesting resources...</p>
+    </div>
+
+    <div id="loadingSpinner" class="has-text-centered hidden">
+        <p>Transcription in progress...</p>
+    </div>
+
+    <div id="resultSection" class="notification is-success mt-4 hidden">
+        <h2 class="subtitle">Transcription Result</h2>
+        <div id="resultText"></div>
+    </div>
+
+    <div id="errorSection" class="notification is-danger mt-4 hidden">
+        <p id="errorMessage">Transcription failed.</p>
+    </div>
+  </div>
+  <script src="details.js"></script>
+</body></html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Voice Message Finder</title>
+  <!-- Bulma CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" rel="stylesheet">
+  <!-- Font Awesome CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    .container {
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .list-group-item {
+      cursor: pointer;
+    }
+    .list-group-item:hover {
+      background-color: #444;
+    }
+    .button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark">
+  <div class="container" data-theme="dark">
+    <h1 class="title is-4">Voice Messages</h1>
+    <ul id="file-list" class="list-group"></ul>
+  </div>
+  <script src="popup.js"></script>
+  <script src="resize-popup.js"></script>
+</body>
+</html>

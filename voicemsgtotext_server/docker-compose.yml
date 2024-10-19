@@ -1,0 +1,42 @@
+
+version: '3'
+services:
+  rabbitmq:
+    image: "rabbitmq:latest"
+    container_name: "rabbitmq"
+    ports:
+      - "5672:5672"     
+      - "15672:15672"  
+
+  api:
+    build: 
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: "voicetomsg_api"
+    volumes:
+      - data-volume:/app/data
+    command: ["uvicorn", "api:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    depends_on:
+      - rabbitmq
+
+  whisper_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: "voicetomsg_worker"
+    volumes:
+      - data-volume:/app/data
+    command: celery -A queues.celery_app worker --loglevel=info 
+    depends_on:
+      - rabbitmq
+
+volumes:
+  data-volume:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "${PWD}/data"
+
